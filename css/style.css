@@ -1,0 +1,255 @@
+:root {
+  --bg: #e3e4e5;
+  --text: #1d2028;
+  --muted: #5a5d64;
+  --accent: #e85a36;
+  --accent-light: #f8e3dc;
+  --card: #ffffff;
+  --card-glass: rgba(255, 255, 255, 0.75);
+  --shadow: 0 10px 30px rgba(0,0,0,0.08);
+  --maxW: 1200px;
+  --radius: 14px;
+  --transition: all 0.3s ease;
+}
+
+* {box-sizing: border-box; margin: 0; padding: 0;}
+html, body {scroll-behavior: smooth;}
+body {
+  font-family: "Inter", "Roboto", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.wrap {
+  max-width: var(--maxW);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+header {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  transition: var(--transition);
+}
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+}
+.logo img {height: 52px; transition: var(--transition);}
+.logo img:hover {transform: scale(1.05);}
+.nav {
+  display: flex;
+  gap: 24px;
+}
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  position: relative;
+  transition: var(--transition);
+}
+.nav a:hover {
+  color: var(--accent);
+}
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+.nav a:hover::after {width: 100%;}
+
+.hero {
+  background: linear-gradient(135deg, #fff 0%, #eef1f4 100%);
+  padding: 90px 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  right: -150px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle at center, var(--accent-light), transparent 70%);
+  z-index: 0;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-text h1 {
+  font-size: clamp(30px, 4vw, 50px);
+  font-weight: 900;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+.hero-text p {
+  color: var(--muted);
+  font-size: 1.1rem;
+  margin-bottom: 28px;
+}
+.hero-image {
+  height: 360px;
+  border-radius: var(--radius);
+  background: url("../img/lol tank.png") center/cover no-repeat;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+.hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1), transparent 40%);
+}
+.hero-image:hover {
+  transform: scale(1.03);
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 30px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: 0 8px 20px rgba(232,90,54,0.25);
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(232,90,54,0.3);
+  background: #f26c46;
+}
+
+.section {
+  padding: 80px 0;
+}
+.section.light {
+  background: linear-gradient(180deg, #fdfdfd 0%, #f2f4f6 100%);
+}
+.section h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  color: var(--text);
+}
+.section h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 3px;
+  background: var(--accent);
+  margin: 12px auto 0;
+  border-radius: 3px;
+}
+
+.grid {display: grid; gap: 26px;}
+.cols-3 {grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));}
+.cols-2 {grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));}
+
+.model-card, .brand-card, .guide-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.model-card:hover, .brand-card:hover, .guide-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+}
+.model-card img, .brand-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  transition: transform 0.4s ease;
+}
+.model-card:hover img, .brand-card:hover img {
+  transform: scale(1.05);
+}
+.model-card h3, .brand-card h3, .guide-card h3 {
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+.model-card p, .brand-card p, .guide-card p {
+  color: var(--muted);
+  font-size: 0.97rem;
+}
+
+blockquote {
+  background: var(--card);
+  border-left: 4px solid var(--accent);
+  padding: 20px;
+  border-radius: var(--radius);
+  color: var(--muted);
+  font-style: italic;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+
+.footer {
+  background: #ffffff;
+  padding: 70px 0;
+  border-top: 1px solid #e5e7eb;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+}
+.footer img {height: 48px; margin-bottom: 10px;}
+.footer h3 {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.footer p, .footer a {
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
+.footer a:hover {
+  color: var(--accent);
+}
+.footer-bottom {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+@media (max-width: 900px) {
+  .hero-grid {grid-template-columns: 1fr;}
+  .hero-image {height: 280px;}
+}
