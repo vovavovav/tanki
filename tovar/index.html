@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Купить модели танков - Сборные танки Т-34, Тигр, Пантера, Шерман, Абрамс, Леопард | Магазин моделей танков</title>
+    <title>Купить модели танков | Сборные танки Т-34, Тигр | Магазин</title>
+    <meta name="description" content="Купить модели танков. Сборные модели танков Т-34, Тигр, Пантера, Шерман. Магазин моделей танков с доставкой. Танки модели для сборки масштаб 1:35.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Store",
+      "name": "Магазин моделей танков",
+      "description": "Купить модели танков, сборные модели танков, танки модели для сборки",
+      "keywords": "купить модели танков, сборные модели танков, магазин моделей танков, танки модели для сборки, модель танка Т-34 купить, танк Тигр модель для сборки",
+      "url": "https://ваш-сайт.ru"
+    }
+    </script>
     <style>
         * {
             margin: 0;
@@ -17,72 +28,61 @@
             color: #2c3e50;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             min-height: 100vh;
+            padding: 20px;
         }
 
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
         }
 
         .header {
             background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
             color: white;
-            padding: 50px 0;
+            padding: 40px;
             text-align: center;
             border-radius: 15px;
             margin-bottom: 40px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
         }
 
         .header h1 {
-            font-size: 3.2em;
+            font-size: 2.5em;
             margin-bottom: 15px;
             font-weight: 700;
-            position: relative;
         }
 
-        .header p {
+        .subtitle {
             font-size: 1.3em;
             opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto 25px;
-            font-weight: 300;
-            position: relative;
+            margin-bottom: 20px;
         }
 
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
-            position: relative;
-        }
-
-        .stat-item {
-            background: rgba(255,255,255,0.1);
-            padding: 15px 25px;
+        .add-product-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
             border-radius: 10px;
-            backdrop-filter: blur(10px);
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
         }
 
-        .products-grid {
+        .add-product-btn:hover {
+            background: linear-gradient(135deg, #229954, #27ae60);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(39, 174, 96, 0.4);
+        }
+
+        .products {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
 
         .product-card {
@@ -92,7 +92,9 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
             border: 1px solid #e9ecef;
+            text-align: center;
             position: relative;
+            overflow: hidden;
         }
 
         .product-card:hover {
@@ -100,97 +102,97 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
 
-        .product-badge {
+        .product-card::before {
+            content: '';
             position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #e74c3c;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            font-weight: bold;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2980b9, #3498db);
         }
 
-        .product-image {
+        .product-card img {
             width: 100%;
+            max-width: 250px;
             height: 200px;
-            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            object-fit: cover;
             border-radius: 10px;
             margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3em;
+            border: 2px solid #f8f9fa;
+            transition: transform 0.3s ease;
         }
 
-        .product-card h3 {
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-card h2 {
             color: #2c3e50;
             margin-bottom: 15px;
             font-size: 1.3em;
             line-height: 1.3;
         }
 
+        .product-card h2 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .product-card h2 a:hover {
+            color: #3498db;
+        }
+
         .product-card .price {
             font-size: 1.8em;
             font-weight: bold;
             color: #27ae60;
-            margin-bottom: 15px;
-        }
-
-        .product-card .old-price {
-            text-decoration: line-through;
-            color: #7f8c8d;
-            font-size: 1.2em;
-            margin-left: 10px;
-        }
-
-        .product-features {
-            list-style: none;
             margin: 15px 0;
-        }
-
-        .product-features li {
-            padding: 5px 0;
-            color: #5d6d7e;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .product-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #27ae60;
-            font-weight: bold;
-        }
-
-        .buy-btn {
-            display: block;
-            width: 100%;
             background: linear-gradient(135deg, #27ae60, #2ecc71);
-            color: white;
-            text-align: center;
-            padding: 15px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-            margin-top: 15px;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .buy-btn:hover {
-            background: linear-gradient(135deg, #229954, #27ae60);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+        .product-meta {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ecf0f1;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        .product-id {
+            background: #3498db;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+        }
+
+        .no-products {
+            text-align: center;
+            padding: 60px 40px;
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 2px dashed #bdc3c7;
+        }
+
+        .no-products h2 {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            font-size: 1.8em;
         }
 
         .seo-content {
             background: white;
             border-radius: 15px;
-            padding: 50px;
+            padding: 40px;
             margin-top: 50px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
         }
@@ -198,25 +200,25 @@
         .seo-content h2 {
             color: #2c3e50;
             margin-bottom: 30px;
-            font-size: 2.2em;
+            font-size: 2em;
             text-align: center;
         }
 
         .seo-section {
-            margin-bottom: 40px;
+            margin-bottom: 35px;
         }
 
         .seo-section h3 {
             color: #2980b9;
             margin-bottom: 20px;
-            font-size: 1.5em;
+            font-size: 1.4em;
             border-left: 4px solid #2980b9;
             padding-left: 15px;
         }
 
         .seo-section p {
             margin-bottom: 20px;
-            line-height: 1.8;
+            line-height: 1.7;
             color: #5d6d7e;
             font-size: 1.1em;
         }
@@ -224,15 +226,15 @@
         .keyword-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin: 25px 0;
+            gap: 10px;
+            margin: 20px 0;
         }
 
         .keyword-tag {
             background: #ecf0f1;
-            padding: 10px 18px;
-            border-radius: 25px;
-            font-size: 0.95em;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
             color: #2c3e50;
             border: 1px solid #bdc3c7;
             transition: all 0.3s ease;
@@ -265,494 +267,140 @@
 
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 2.2em;
+                font-size: 2em;
             }
             
-            .products-grid {
+            .products {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
             
-            .container {
+            body {
                 padding: 15px;
             }
             
             .seo-content {
-                padding: 30px 20px;
+                padding: 25px 20px;
             }
             
-            .stats {
-                flex-direction: column;
-                gap: 15px;
+            .header {
+                padding: 30px 20px;
             }
         }
 
-        .rating {
-            color: #f39c12;
-            margin: 10px 0;
-        }
-
-
-        .headerr {
-            background: rgba(175, 175, 175, 0.96);
-            backdrop-filter: blur(8px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-            transition: var(--transition);
-        }
-
-        .header-innerr {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 0;
-        }
-
-        .logo img {
-            height: 52px;
-            transition: var(--transition);
-        }
-
-        .logo img:hover {
-            transform: scale(1.05);
-        }
-
-        .navr {
-            display: flex;
-            gap: 24px;
-        }
-
-        .navr a {
-            color: var(--muted);
-            text-decoration: none;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .navr a:hover {
-            color: var(--accent);
-        }
-
-        .navr a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -4px;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .navr a:hover::after {
+        .image-placeholder {
             width: 100%;
+            max-width: 250px;
+            height: 200px;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            border-radius: 10px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3em;
         }
 
-
-
-        .footerr {
-            background: #9c9c9c;
-            padding: 70px 0;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .footerr-gridr {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .footerr img {
-            height: 48px;
-            margin-bottom: 10px;
-        }
-
-        .footerr h3 {
-            font-size: 1.1rem;
-            color: var(--text);
-            margin-bottom: 8px;
-        }
-
-        .footerr p,
-        .footerr a {
-            color: var(--muted);
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footerr a:hover {
-            color: var(--accent);
-        }
-
-        .footerr-bottom {
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--muted);
-            padding-top: 16px;
-            border-top: 1px solid #717171;
+        .seo-hidden {
+            display: none;
         }
     </style>
 </head>
-<header class="headerr">
-    <div class="wrap header-innerr">
-        <a href="/" class="logo"><img src="hehe.png" alt="TankModel — магазин сборных моделей танков"></a>
-        <nav class="navr">
-            <a href="#catalog">Каталог</a>
-            <a href="#brands">Бренды</a>
-            <a href="guides/index.html">Гайды</a>
-            <a href="#about">О нас</a>
-            <a href="#contacts">Контакты</a>
-        </nav>
-    </div>
-</header>
 <body>
+    <!-- Скрытый SEO-текст с точными вхождениями -->
+    <div class="seo-hidden">
+        Купить модели танков. Сборные модели танков в нашем магазине моделей танков. 
+        Танки модели для сборки. Модель танка Т-34 купить. Танк Тигр модель для сборки. 
+        Модели танков масштаб 1:35. Российские модели танков купить. Немецкие танки модели купить. 
+        Новинки моделей танков 2024 купить. Танк Пантера модель купить. Советские танки сборные модели купить. 
+        Модель танка ИС-2 купить. Танк Шерман модель купить. Леопард 2 модель танка купить. 
+        Абрамс М1А2 модель купить. Редкие модели танков купить. Модели танков с электроникой купить. 
+        Коллекционные модели танков купить. Танки второй мировой модели купить.
+    </div>
+
     <div class="container">
         <header class="header">
-            <h1>🛒 МАГАЗИН МОДЕЛЕЙ ТАНКОВ</h1>
-            <p>Купить сборные модели танков от ведущих производителей с доставкой по России</p>
-            <div class="stats">
-                <div class="stat-item">🚚 Бесплатная доставка от 3000₽</div>
-                <div class="stat-item">⭐ Гарантия качества</div>
-                <div class="stat-item">📦 20+ моделей в наличии</div>
-            </div>
+            <h1>Купить модели танков - сборные танки Т-34, Тигр, Пантера</h1>
+            <p class="subtitle">Магазин моделей танков с доставкой по России</p>
+            <a href="/products/add" class="add-product-btn">➕ Добавить товар</a>
         </header>
 
-        <div class="products-grid">
-            <!-- Товар 1 -->
-            <div class="product-card">
-                <div class="product-badge">ХИТ</div>
-                <div class="product-image">🇷🇺</div>
-                <h3>Т-34-85 модель танка 1:35 (Zvezda)</h3>
-                <div class="price">2 490₽ <span class="old-price">2 990₽</span></div>
-                <div class="rating">★★★★★ 4.8</div>
-                <ul class="product-features">
-                    <li>Масштаб: 1:35</li>
-                    <li>Деталей: 287 шт</li>
-                    <li>Уровень: Средний</li>
-                    <li>Производитель: Zvezda</li>
-                </ul>
-                <a href="#" class="buy-btn">🛒 В КОРЗИНУ</a>
+        <?php if (empty($products)): ?>
+            <div class="no-products">
+                <h2>📦 Товары пока не добавлены</h2>
+                <p>Будьте первым, кто добавит товар в наш магазин!</p>
+                <a href="/products/add" class="add-product-btn" style="margin-top: 20px;">Добавить первый товар</a>
             </div>
-
-            <!-- Товар 2 -->
-            <div class="product-card">
-                <div class="product-badge">НОВИНКА</div>
-                <div class="product-image">🇩🇪</div>
-                <h3>Tiger I немецкий тяжелый танк 1:35 (Tamiya)</h3>
-                <div class="price">3 790₽</div>
-                <div class="rating">★★★★★ 4.9</div>
-                <ul class="product-features">
-                    <li>Масштаб: 1:35</li>
-                    <li>Деталей: 412 шт</li>
-                    <li>Уровень: Сложный</li>
-                    <li>Производитель: Tamiya</li>
-                </ul>
-                <a href="#" class="buy-btn">🛒 В КОРЗИНУ</a>
+        <?php else: ?>
+            <div class="products">
+                <?php foreach ($products as $product): ?>
+                    <div class="product-card">
+                        <?php if ($product->getImage()): ?>
+                            <img src="/img/product/<?= htmlspecialchars($product->getImage()); ?>" 
+                                 alt="<?= htmlspecialchars($product->getTitle()); ?>">
+                        <?php else: ?>
+                            <div class="image-placeholder">🇷🇺</div>
+                        <?php endif; ?>
+                        
+                        <h2>
+                            <a href="/products/<?= $product->getId(); ?>">
+                                <?= htmlspecialchars($product->getTitle()); ?>
+                            </a>
+                        </h2>
+                        <div class="price"><?= htmlspecialchars($product->getPrice()); ?> руб.</div>
+                        <div class="product-meta">
+                            <span class="product-id">ID: <?= $product->getId(); ?></span>
+                            <span>🛒 В наличии</span>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
+        <?php endif; ?>
 
-            <!-- Товар 3 -->
-            <div class="product-card">
-                <div class="product-image">🇺🇸</div>
-                <h3>M4 Sherman американский танк 1:35 (Academy)</h3>
-                <div class="price">2 190₽</div>
-                <div class="rating">★★★★☆ 4.6</div>
-                <ul class="product-features">
-                    <li>Масштаб: 1:35</li>
-                    <li>Деталей: 234 шт</li>
-                    <li>Уровень: Начальный</li>
-                    <li>Производитель: Academy</li>
-                </ul>
-                <a href="#" class="buy-btn">🛒 В КОРЗИНУ</a>
-            </div>
-
-            <!-- Товар 4 -->
-            <div class="product-card">
-                <div class="product-badge">АКЦИЯ</div>
-                <div class="product-image">🇩🇪</div>
-                <h3>Panther Ausf.G немецкий танк 1:35 (Dragon)</h3>
-                <div class="price">4 290₽ <span class="old-price">4 890₽</span></div>
-                <div class="rating">★★★★★ 4.7</div>
-                <ul class="product-features">
-                    <li>Масштаб: 1:35</li>
-                    <li>Деталей: 389 шт</li>
-                    <li>Уровень: Профессиональный</li>
-                    <li>Производитель: Dragon</li>
-                </ul>
-                <a href="#" class="buy-btn">🛒 В КОРЗИНУ</a>
-            </div>
-
-            <!-- Товар 5 -->
-            <div class="product-card">
-                <div class="product-image">🇷🇺</div>
-                <h3>ИС-2 советский тяжелый танк 1:35 (Zvezda)</h3>
-                <div class="price">2 890₽</div>
-                <div class="rating">★★★★☆ 4.5</div>
-                <ul class="product-features">
-                    <li>Масштаб: 1:35</li>
-                    <li>Деталей: 276 шт</li>
-                    <li>Уровень: Средний</li>
-                    <li>Производитель: Zvezda</li>
-                </ul>
-                <a href="#" class="buy-btn">🛒 В КОРЗИНУ</a>
-            </div>
-
-            <!-- Товар 6 -->
-            <div class="product-card">
-                <div class="product-image">🇩🇪</div>
-                <h3>Panzer IV Ausf.H немецкий танк 1:35 (Revell)</h3>
-                <div class="price">2 590₽</div>
-                <div class="rating">★★★★☆ 4.4</div>
-                <ul class="product-features">
-                    <li>Масштаб: 1:35</li>
-                    <li>Деталей: 198 шт</li>
-                    <li>Уровень: Начальный</li>
-                    <li>Производитель: Revell</li>
-                </ul>
-                <a href="#" class="buy-btn">🛒 В КОРЗИНУ</a>
-            </div>
-
-            <!-- Товар 7 -->
-            <div class="product-card">
-                <div class="product-badge">НОВИНКА</div>
-                <div class="product-image">🇺🇸</div>
-                <h3>M1A2 Abrams современный танк 1:35 (Takom)</h3>
-                <div class="price">5 490₽</div>
-                <div class="rating">★★★★★ 4.8</div>
-                <ul class="product-features">
-                    <li>Масштаб: 1:35</li>
-                    <li>Деталей: 523 шт</li>
-                    <li>Уровень: Профессиональный</li>
-                    <li>Производитель: Takom</li>
-                </ul>
-                <a href="#" class="buy-btn">🛒 В КОРЗИНУ</a>
-            </div>
-
-            <!-- Товар 8 -->
-            <div class="product-card">
-                <div class="product-image">🇩🇪</div>
-                <h3>Leopard 2A7 немецкий танк 1:35 (Meng)</h3>
-                <div class="price">4 890₽</div>
-                <div class="rating">★★★★☆ 4.6</div>
-                <ul class="product-features">
-                    <li>Масштаб: 1:35</li>
-                    <li>Деталей: 467 шт</li>
-                    <li>Уровень: Сложный</li>
-                    <li>Производитель: Meng</li>
-                </ul>
-                <a href="#" class="buy-btn">🛒 В КОРЗИНУ</a>
-            </div>
-
-            <!-- Товар 9 -->
-            <div class="product-card">
-                <div class="product-image">🇷🇺</div>
-                <h3>Т-90М "Прорыв" российский танк 1:35 (Zvezda)</h3>
-                <div class="price">3 290₽</div>
-                <div class="rating">★★★★★ 4.9</div>
-                <ul class="product-features">
-                    <li>Масштаб: 1:35</li>
-                    <li>Деталей: 345 шт</li>
-                    <li>Уровень: Средний</li>
-                    <li>Производитель: Zvezda</li>
-                </ul>
-                <a href="#" class="buy-btn">🛒 В КОРЗИНУ</a>
-            </div>
-
-            <!-- Товар 10 -->
-            <div class="product-card">
-                <div class="product-badge">ХИТ</div>
-                <div class="product-image">🇩🇪</div>
-                <h3>Jagdpanther истребитель танков 1:35 (Tamiya)</h3>
-                <div class="price">3 990₽</div>
-                <div class="rating">★★★★★ 4.7</div>
-                <ul class="product-features">
-                    <li>Масштаб: 1:35</li>
-                    <li>Деталей: 378 шт</li>
-                    <li>Уровень: Сложный</li>
-                    <li>Производитель: Tamiya</li>
-                </ul>
-                <a href="#" class="buy-btn">🛒 В КОРЗИНУ</a>
-            </div>
-
-            <!-- Товар 11 -->
-            <div class="product-card">
-                <div class="product-image">🇬🇧</div>
-                <h3>Churchill британский пехотный танк 1:35 (Airfix)</h3>
-                <div class="price">2 790₽</div>
-                <div class="rating">★★★★☆ 4.3</div>
-                <ul class="product-features">
-                    <li>Масштаб: 1:35</li>
-                    <li>Деталей: 256 шт</li>
-                    <li>Уровень: Средний</li>
-                    <li>Производитель: Airfix</li>
-                </ul>
-                <a href="#" class="buy-btn">🛒 В КОРЗИНУ</a>
-            </div>
-
-            <!-- Товар 12 -->
-            <div class="product-card">
-                <div class="product-image">🇷🇺</div>
-                <h3>КВ-1 советский тяжелый танк 1:35 (Zvezda)</h3>
-                <div class="price">2 690₽</div>
-                <div class="rating">★★★★☆ 4.5</div>
-                <ul class="product-features">
-                    <li>Масштаб: 1:35</li>
-                    <li>Деталей: 234 шт</li>
-                    <li>Уровень: Средний</li>
-                    <li>Производитель: Zvezda</li>
-                </ul>
-                <a href="#" class="buy-btn">🛒 В КОРЗИНУ</a>
-            </div>
-
-            <!-- Товар 13 -->
-            <div class="product-card">
-                <div class="product-badge">НОВИНКА</div>
-                <div class="product-image">🇮🇱</div>
-                <h3>Merkava Mk.4 израильский танк 1:35 (Meng)</h3>
-                <div class="price">5 290₽</div>
-                <div class="rating">★★★★★ 4.8</div>
-                <ul class="product-features">
-                    <li>Масштаб: 1:35</li>
-                    <li>Деталей: 512 шт</li>
-                    <li>Уровень: Профессиональный</li>
-                    <li>Производитель: Meng</li>
-                </ul>
-                <a href="#" class="buy-btn">🛒 В КОРЗИНУ</a>
-            </div>
-
-            <!-- Товар 14 -->
-            <div class="product-card">
-                <div class="product-image">🇯🇵</div>
-                <h3>Type 10 японский танк 1:35 (Platz)</h3>
-                <div class="price">4 590₽</div>
-                <div class="rating">★★★★☆ 4.6</div>
-                <ul class="product-features">
-                    <li>Масштаб: 1:35</li>
-                    <li>Деталей: 389 шт</li>
-                    <li>Уровень: Сложный</li>
-                    <li>Производитель: Platz</li>
-                </ul>
-                <a href="#" class="buy-btn">🛒 В КОРЗИНУ</a>
-            </div>
-
-            <!-- Товар 15 -->
-            <div class="product-card">
-                <div class="product-image">🇫🇷</div>
-                <h3>Leclerc французский танк 1:35 (Takom)</h3>
-                <div class="price">4 890₽</div>
-                <div class="rating">★★★★☆ 4.5</div>
-                <ul class="product-features">
-                    <li>Масштаб: 1:35</li>
-                    <li>Деталей: 423 шт</li>
-                    <li>Уровень: Сложный</li>
-                    <li>Производитель: Takom</li>
-                </ul>
-                <a href="#" class="buy-btn">🛒 В КОРЗИНУ</a>
-            </div>
-
-            <!-- Товар 16 -->
-            <div class="product-card">
-                <div class="product-badge">АКЦИЯ</div>
-                <div class="product-image">🇬🇧</div>
-                <h3>Challenger 2 британский танк 1:35 (Tamiya)</h3>
-                <div class="price">4 190₽ <span class="old-price">4 690₽</span></div>
-                <div class="rating">★★★★★ 4.7</div>
-                <ul class="product-features">
-                    <li>Масштаб: 1:35</li>
-                    <li>Деталей: 398 шт</li>
-                    <li>Уровень: Сложный</li>
-                    <li>Производитель: Tamiya</li>
-                </ul>
-                <a href="#" class="buy-btn">🛒 В КОРЗИНУ</a>
-            </div>
-
-            <!-- Товар 17 -->
-            <div class="product-card">
-                <div class="product-image">🇩🇪</div>
-                <h3>Sturmgeschütz III немецкая САУ 1:35 (Dragon)</h3>
-                <div class="price">3 490₽</div>
-                <div class="rating">★★★★☆ 4.4</div>
-                <ul class="product-features">
-                    <li>Масштаб: 1:35</li>
-                    <li>Деталей: 312 шт</li>
-                    <li>Уровень: Средний</li>
-                    <li>Производитель: Dragon</li>
-                </ul>
-                <a href="#" class="buy-btn">🛒 В КОРЗИНУ</a>
-            </div>
-
-            <!-- Товар 18 -->
-            <div class="product-card">
-                <div class="product-image">🇷🇺</div>
-                <h3>БТ-7 советский скоростной танк 1:35 (ICM)</h3>
-                <div class="price">2 390₽</div>
-                <div class="rating">★★★★☆ 4.3</div>
-                <ul class="product-features">
-                    <li>Масштаб: 1:35</li>
-                    <li>Деталей: 187 шт</li>
-                    <li>Уровень: Начальный</li>
-                    <li>Производитель: ICM</li>
-                </ul>
-                <a href="#" class="buy-btn">🛒 В КОРЗИНУ</a>
-            </div>
-
-            <!-- Товар 19 -->
-            <div class="product-card">
-                <div class="product-badge">НОВИНКА</div>
-                <div class="product-image">🇺🇦</div>
-                <h3>БМ "Оплот" украинский танк 1:35 (MiniArt)</h3>
-                <div class="price">3 890₽</div>
-                <div class="rating">★★★★☆ 4.5</div>
-                <ul class="product-features">
-                    <li>Масштаб: 1:35</li>
-                    <li>Деталей: 345 шт</li>
-                    <li>Уровень: Средний</li>
-                    <li>Производитель: MiniArt</li>
-                </ul>
-                <a href="#" class="buy-btn">🛒 В КОРЗИНУ</a>
-            </div>
-
-            <!-- Товар 20 -->
-            <div class="product-card">
-                <div class="product-image">🇨🇳</div>
-                <h3>Type 99 китайский танк 1:35 (Trumpeter)</h3>
-                <div class="price">3 990₽</div>
-                <div class="rating">★★★★☆ 4.4</div>
-                <ul class="product-features">
-                    <li>Масштаб: 1:35</li>
-                    <li>Деталей: 367 шт</li>
-                    <li>Уровень: Средний</li>
-                    <li>Производитель: Trumpeter</li>
-                </ul>
-                <a href="#" class="buy-btn">🛒 В КОРЗИНУ</a>
-            </div>
-        </div>
-
-        <!-- SEO-контент -->
+        <!-- Основной SEO-контент -->
         <section class="seo-content">
-            <h2>🏪 МАГАЗИН МОДЕЛЕЙ ТАНКОВ - КУПИТЬ СБОРНЫЕ МОДЕЛИ ТАНКОВ</h2>
+            <h2>Купить модели танков в интернет-магазине</h2>
             
             <div class="seo-section">
-                <h3>🛒 КУПИТЬ МОДЕЛИ ТАНКОВ ОТ ПРОВЕРЕННЫХ ПРОИЗВОДИТЕЛЕЙ</h3>
-                <p>В нашем магазине вы можете купить сборные модели танков от ведущих мировых производителей: Tamiya, Zvezda, Dragon, Revell, Academy, Trumpeter и многих других. Мы предлагаем широкий ассортимент моделей танков различных эпох и стран - от легендарных танков Второй мировой войны до современных боевых машин.</p>
+                <h3>Сборные модели танков для коллекционирования</h3>
+                <p>Если вы хотите <strong>купить модели танков</strong>, наш магазин предлагает широкий выбор <strong>сборных моделей танков</strong>. 
+                У нас вы можете <strong>купить модель танка Т-34</strong> - легендарной советской машины, или <strong>танк Тигр модель для сборки</strong> - грозного немецкого тяжелого танка.</p>
+                
+                <p>Все <strong>модели танков масштаб 1:35</strong> отличаются высокой детализацией. Мы предлагаем <strong>российские модели танков купить</strong>, 
+                а также <strong>немецкие танки модели купить</strong> от ведущих производителей. В каталоге представлены <strong>новинки моделей танков 2024 купить</strong>.</p>
                 
                 <div class="keyword-list">
-                    <span class="keyword-tag">модели танков купить</span>
+                    <span class="keyword-tag">купить модели танков</span>
                     <span class="keyword-tag">сборные модели танков</span>
                     <span class="keyword-tag">магазин моделей танков</span>
                     <span class="keyword-tag">танки модели для сборки</span>
-                    <span class="keyword-tag">модель танка т-34 купить</span>
                 </div>
             </div>
 
             <div class="seo-section">
-                <h3>🎯 ПОПУЛЯРНЫЕ МОДЕЛИ ТАНКОВ ДЛЯ КОЛЛЕКЦИИ И СБОРКИ</h3>
-                <p>Самые востребованные модели среди наших покупателей - это советский Т-34-85, немецкий Tiger I, американский M4 Sherman и современный Abrams M1A2. Каждая модель отличается высокой детализацией, точностью воспроизведения и качеством литья. Мы тщательно отбираем ассортимент, чтобы предложить вам только лучшие наборы для моделирования.</p>
+                <h3>Популярные модели танков для сборки</h3>
+                <p>Среди наших покупателей популярен <strong>танк Пантера модель купить</strong> - один из лучших немецких средних танков. 
+                Также востребованы <strong>советские танки сборные модели купить</strong>, такие как <strong>модель танка ИС-2 купить</strong> - тяжелого танка прорыва.</p>
+                
+                <p>Для любителей американской техники доступен <strong>танк Шерман модель купить</strong>. Из современных моделей предлагаем 
+                <strong>Леопард 2 модель танка купить</strong> и <strong>Абрамс М1А2 модель купить</strong>.</p>
+                
+                <div class="keyword-list">
+                    <span class="keyword-tag">танк Пантера модель купить</span>
+                    <span class="keyword-tag">советские танки сборные модели купить</span>
+                    <span class="keyword-tag">модель танка ИС-2 купить</span>
+                    <span class="keyword-tag">танк Шерман модель купить</span>
+                </div>
+            </div>
+
+            <div class="seo-section">
+                <h3>Эксклюзивные и коллекционные модели</h3>
+                <p>Для настоящих ценителей у нас есть <strong>редкие модели танков купить</strong> и <strong>модели танков с электроникой купить</strong>. 
+                Коллекционеры могут <strong>коллекционные модели танков купить</strong> ограниченными сериями.</p>
+                
+                <p>Особой популярностью пользуются <strong>танки второй мировой модели купить</strong> - точные копии исторической техники. 
+                Все модели сопровождаются подробными инструкциями и гарантией качества.</p>
                 
                 <div class="benefits-grid">
                     <div class="benefit-card">
@@ -772,47 +420,24 @@
                         <p>Помощь в выборе и сборке моделей</p>
                     </div>
                 </div>
-            </div>
-
-            <div class="seo-section">
-                <h3>🔍 КАК ВЫБРАТЬ И КУПИТЬ МОДЕЛЬ ТАНКА</h3>
-                <p>При выборе модели танка обратите внимание на масштаб (самый популярный - 1:35), уровень сложности сборки (от начального до профессионального) и производителя. Начинающим моделистам мы рекомендуем наборы от Zvezda и Academy, опытным - Tamiya и Dragon, профессионалам - Takom и Meng. Все наборы включают подробные инструкции по сборке и покраске.</p>
                 
                 <div class="keyword-list">
-                    <span class="keyword-tag">танк тигр модель для сборки</span>
-                    <span class="keyword-tag">модели танков масштаб 1:35</span>
-                    <span class="keyword-tag">российские модели танков купить</span>
-                    <span class="keyword-tag">немецкие танки модели купить</span>
+                    <span class="keyword-tag">редкие модели танков купить</span>
+                    <span class="keyword-tag">модели танков с электроникой купить</span>
+                    <span class="keyword-tag">коллекционные модели танков купить</span>
+                    <span class="keyword-tag">танки второй мировой модели купить</span>
                 </div>
             </div>
 
             <div class="seo-section">
-                <h3>🎁 ИДЕАЛЬНЫЙ ПОДАРОК ДЛЯ КОЛЛЕКЦИОНЕРОВ И МОДЕЛИСТОВ</h3>
-                <p>Сборные модели танков - это прекрасный подарок для увлеченных историей военной техники, коллекционеров и всех, кто интересуется моделированием. Наши наборы подходят как для взрослых, так и для детей старше 14 лет. Мы предлагаем подарочные сертификаты и специальные наборы для начинающих, которые включают все необходимое для первой сборки.</p>
+                <h3>Почему выбирают наш магазин моделей танков</h3>
+                <p>Мы специализируемся на продаже качественных <strong>сборных моделей танков</strong> от проверенных производителей. 
+                В нашем ассортименте представлены как классические <strong>модели танков для сборки</strong>, так и эксклюзивные коллекционные издания.</p>
                 
-                <div class="keyword-list">
-                    <span class="keyword-tag">новинки моделей танков 2024 купить</span>
-                    <span class="keyword-tag">танк пантера модель купить</span>
-                    <span class="keyword-tag">модель танка ис-2 купить</span>
-                    <span class="keyword-tag">танк шерман модель купить</span>
-                </div>
+                <p>Если вы ищете, где <strong>купить модель танка Т-34</strong> или любой другой бронетехники - вы обратились по адресу. 
+                Мы гарантируем подлинность всех моделей и предоставляем полную поддержку нашим клиентам.</p>
             </div>
         </section>
     </div>
-    <section id="contacts" class="footerr">
-        <div class="wrapr footer-gridr">
-            <div>
-                <img src="hehe.png" alt="TankModel логотип">
-                <p>TankModel — интернет-магазин сборных моделей танков и аксессуаров. Масштабы 1:35 и 1:72, бренды
-                    Tamiya, Звезда, Revell. Мы предлагаем лучшие условия и консультации по выбору моделей и
-                    инструментов.</p>
-            </div>
-            <div>
-                <h4>Контакты</h4>
-                <p>г. Москва, ул. Моделистов, 7<br>Тел.: +7 (900) 123-45-67<br>E-mail: info@tankmodel.ru</p>
-            </div>
-        </div>
-        <div class="footer-bottom">© 2025 TankModel. Все права защищены.</div>
-    </section>
 </body>
 </html>
