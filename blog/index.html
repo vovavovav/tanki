@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статьи о моделях танков | Обзоры, новинки, советы по сборке</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+            min-height: 100vh;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(139, 0, 0, 0.05) 0%, transparent 20%);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg,
+                    rgba(44, 62, 80, 0.95) 0%,
+                    rgba(139, 0, 0, 0.9) 50%,
+                    rgba(184, 134, 11, 0.9) 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grit" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grit)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow:
+                3px 3px 6px rgba(0, 0, 0, 0.8),
+                0 0 20px rgba(255, 215, 0, 0.5);
+            font-weight: 900;
+            letter-spacing: 2px;
+            position: relative;
+            background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.4em;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            font-weight: 300;
+            position: relative;
+        }
+
+        .create-article-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #8b0000, #b22222);
+            color: white;
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.4s ease;
+            margin-top: 20px;
+            box-shadow:
+                0 8px 25px rgba(139, 0, 0, 0.5),
+                0 0 15px rgba(255, 215, 0, 0.3);
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .create-article-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .create-article-btn:hover::before {
+            left: 100%;
+        }
+
+        .create-article-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow:
+                0 15px 35px rgba(139, 0, 0, 0.7),
+                0 0 25px rgba(255, 215, 0, 0.5);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 35px;
+            margin-bottom: 70px;
+        }
+
+        .article-card {
+            background: linear-gradient(145deg,
+                    rgba(30, 30, 30, 0.95) 0%,
+                    rgba(50, 50, 50, 0.9) 100%);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #8b0000, #ffd700, #8b0000);
+        }
+
+        .article-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.7),
+                0 0 30px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.4);
+        }
+
+        .article-card h2 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            line-height: 1.3;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .article-card h2 a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .article-card h2 a:hover {
+            color: #ffed4e;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .article-card p {
+            color: #ccc;
+            margin-bottom: 25px;
+            font-size: 1em;
+            line-height: 1.7;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            font-size: 0.95em;
+            color: #888;
+        }
+
+        .read-more {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 25px;
+            background: rgba(139, 0, 0, 0.2);
+        }
+
+        .read-more:hover {
+            color: #fff;
+            background: rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.6);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .seo-content {
+            background: linear-gradient(145deg,
+                    rgba(30, 30, 30, 0.95) 0%,
+                    rgba(50, 50, 50, 0.9) 100%);
+            border-radius: 20px;
+            padding: 50px;
+            margin-top: 60px;
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .seo-content h2 {
+            color: #ffd700;
+            margin-bottom: 35px;
+            font-size: 2.5em;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 900;
+        }
+
+        .seo-section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border-left: 4px solid #8b0000;
+        }
+
+        .seo-section h3 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+            font-weight: 700;
+        }
+
+        .seo-section p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: #ddd;
+            font-size: 1.1em;
+        }
+
+        .keyword-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .keyword-tag {
+            background: linear-gradient(45deg, #8b0000, #b22222);
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 0.95em;
+            color: #ffd700;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .keyword-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 0, 0, 0.5);
+        }
+
+        .no-articles {
+            text-align: center;
+            padding: 80px 40px;
+            background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(50, 50, 50, 0.9));
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 2px dashed rgba(255, 215, 0, 0.3);
+        }
+
+        .no-articles h2 {
+            color: #ffd700;
+            margin-bottom: 25px;
+            font-size: 2.2em;
+        }
+
+        .no-articles p {
+            color: #ccc;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.8em;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .seo-content {
+                padding: 30px 20px;
+            }
+
+            .header {
+                padding: 40px 20px;
+            }
+        }
+
+        /* Анимации */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .article-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .article-card:nth-child(odd) {
+            animation-delay: 0.1s;
+        }
+
+        .article-card:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+
+
+
+
+
+        .headerr {
+            background: rgba(175, 175, 175, 0.96);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            transition: var(--transition);
+        }
+
+        .header-innerr {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+        }
+
+        .logo img {
+            height: 52px;
+            transition: var(--transition);
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .navr {
+            display: flex;
+            gap: 24px;
+        }
+
+        .navr a {
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .navr a:hover {
+            color: var(--accent);
+        }
+
+        .navr a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .navr a:hover::after {
+            width: 100%;
+        }
+
+
+
+        .footer {
+            background: #9c9c9c;
+            padding: 70px 0;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer img {
+            height: 48px;
+            margin-bottom: 10px;
+        }
+
+        .footer h3 {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .footer p,
+        .footer a {
+            color: var(--muted);
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--muted);
+            padding-top: 16px;
+            border-top: 1px solid #717171;
+        }
+    </style>
+</head>
+<header class="headerr">
+    <div class="wrap header-innerr">
+        <a href="/" class="logo"><img src="hehe.png" alt="TankModel — магазин сборных моделей танков"></a>
+        <nav class="navr">
+            <a href="#catalog">Каталог</a>
+            <a href="#brands">Бренды</a>
+            <a href="guides/index.html">Гайды</a>
+            <a href="#about">О нас</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+    </div>
+</header>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>⚔️ ШТАБ-КВАРТИРА ТАНКОВОГО МОДЕЛИЗМА</h1>
+            <p>Экспертные обзоры, тактические руководства и архивные исследования бронетехники</p>
+            <a href="/articles/add" class="create-article-btn">🎖️ ДОБАВИТЬ ДОНЕСЕНИЕ</a>
+        </header>
+
+        <div class="articles-grid">
+            <!-- Статья 1 -->
+            <article class="article-card">
+                <h2><a href="/articles/1">Т-34: Легенда советских танковых войск - полный разбор конструкции</a></h2>
+                <p>Глубокий анализ самого массового танка Второй мировой войны. Рассматриваем эволюцию от Т-34-76 до
+                    Т-34-85, особенности бронирования и вооружения. Сравниваем с немецкими аналогами и даем рекомендации
+                    по сборке.</p>
+                <div class="article-meta">
+                    <span>📊 Сложность: Средняя</span>
+                    <a href="/articles/1" class="read-more">ИЗУЧИТЬ ДОНЕСЕНИЕ →</a>
+                </div>
+            </article>
+
+            <!-- Статья 2 -->
+            <article class="article-card">
+                <h2><a href="/articles/2">Tiger I: Немецкая стальная кошка - мифы и реальность</a></h2>
+                <p>Развеиваем легенды о непобедимом "Тигре". Детальный разбор недостатков конструкции, проблем с
+                    трансмиссией и реальной боевой эффективности. Секреты аутентичной покраски и weathering.</p>
+                <div class="article-meta">
+                    <span>📊 Сложность: Высокая</span>
+                    <a href="/articles/2" class="read-more">ИЗУЧИТЬ ДОНЕСЕНИЕ →</a>
+                </div>
+            </article>
+
+            <!-- Статья 3 -->
+            <article class="article-card">
+                <h2><a href="/articles/3">M4 Sherman: Американский рабочий войны</a></h2>
+                <p>От ранних версий до "Easy Eight". Анализ модификаций, вооружения и тактики применения. Особенности
+                    сборки моделей от разных производителей.</p>
+                <div class="article-meta">
+                    <span>📊 Сложность: Начальная</span>
+                    <a href="/articles/3" class="read-more">ИЗУЧИТЬ ДОНЕСЕНИЕ →</a>
+                </div>
+            </article>
+
+            <!-- Статья 4 -->
+            <article class="article-card">
+                <h2><a href="/articles/4">Panther: Идеальный баланс или недостижимый идеал?</a></h2>
+                <p>Технический анализ лучшего немецкого среднего танка. Сравнение с Т-34-85 и Шерманом. Руководство по
+                    созданию диорамы "Курская дуга".</p>
+                <div class="article-meta">
+                    <span>📊 Сложность: Профессиональная</span>
+                    <a href="/articles/4" class="read-more">ИЗУЧИТЬ ДОНЕСЕНИЕ →</a>
+                </div>
+            </article>
+
+            <!-- Статья 5 -->
+            <article class="article-card">
+                <h2><a href="/articles/5">IS-2: Советский тяжелый ответ</a></h2>
+                <p>Разбор 122-мм орудия и эффективности против немецкой брони. Особенности сборки модели от Zvezda с
+                    фототравлением.</p>
+                <div class="article-meta">
+                    <span>📊 Сложность: Средняя</span>
+                    <a href="/articles/5" class="read-more">ИЗУЧИТЬ ДОНЕСЕНИЕ →</a>
+                </div>
+            </article>
+
+            <!-- Статья 6 -->
+            <article class="article-card">
+                <h2><a href="/articles/6">КВ-1: Непробиваемая крепость 1941 года</a></h2>
+                <p>Анализ тактического применения в начальный период войны. Секреты создания реалистичной зимней
+                    камуфляжной схемы.</p>
+                <div class="article-meta">
+                    <span>📊 Сложность: Средняя</span>
+                    <a href="/articles/6" class="read-more">ИЗУЧИТЬ ДОНЕСЕНИЕ →</a>
+                </div>
+            </article>
+
+            <!-- Статья 7 -->
+            <article class="article-card">
+                <h2><a href="/articles/7">Panzer IV: Рабочая лошадка вермахта</a></h2>
+                <p>Эволюция от поддержки пехоты до противотанковой платформы. Обзор модификаций от Ausf.A до Ausf.J.</p>
+                <div class="article-meta">
+                    <span>📊 Сложность: Начальная</span>
+                    <a href="/articles/7" class="read-more">ИЗУЧИТЬ ДОНЕСЕНИЕ →</a>
+                </div>
+            </article>
+
+            <!-- Статья 8 -->
+            <article class="article-card">
+                <h2><a href="/articles/8">Т-90М: Современный русский хищник</a></h2>
+                <p>Анализ систем активной защиты "Релikt" и "Арена". Особенности сборки современной цифровой камуфляжной
+                    схемы.</p>
+                <div class="article-meta">
+                    <span>📊 Сложность: Высокая</span>
+                    <a href="/articles/8" class="read-more">ИЗУЧИТЬ ДОНЕСЕНИЕ →</a>
+                </div>
+            </article>
+
+            <!-- Статья 9 -->
+            <article class="article-card">
+                <h2><a href="/articles/9">Abrams M1A2: Американская технологическая мощь</a></h2>
+                <p>Разбор систем управления огнем и газотурбинного двигателя. Руководство по созданию диорамы "Буря в
+                    пустыне".</p>
+                <div class="article-meta">
+                    <span>📊 Сложность: Профессиональная</span>
+                    <a href="/articles/9" class="read-more">ИЗУЧИТЬ ДОНЕСЕНИЕ →</a>
+                </div>
+            </article>
+
+            <!-- Статья 10 -->
+            <article class="article-card">
+                <h2><a href="/articles/10">Leopard 2A7: Немецкое совершенство</a></h2>
+                <p>Анализ модульной брони и систем активной защиты. Секреты создания современного NATO камуфляжа.</p>
+                <div class="article-meta">
+                    <span>📊 Сложность: Высокая</span>
+                    <a href="/articles/10" class="read-more">ИЗУЧИТЬ ДОНЕСЕНИЕ →</a>
+                </div>
+            </article>
+
+            <!-- Статья 11 -->
+            <article class="article-card">
+                <h2><a href="/articles/11">SU-100: Истребитель танков</a></h2>
+                <p>Тактическая роль и боевое применение. Особенности сборки САУ с открытым боевым отделением.</p>
+                <div class="article-meta">
+                    <span>📊 Сложность: Средняя</span>
+                    <a href="/articles/11" class="read-more">ИЗУЧИТЬ ДОНЕСЕНИЕ →</a>
+                </div>
+            </article>
+
+            <!-- Статья 12 -->
+            <article class="article-card">
+                <h2><a href="/articles/12">Jagdpanther: Идеальный истребитель</a></h2>
+                <p>Анализ баллистических характеристик 88-мм орудия. Руководство по созданию изношенной немецкой желтой
+                    грунтовки.</p>
+                <div class="article-meta">
+                    <span>📊 Сложность: Профессиональная</span>
+                    <a href="/articles/12" class="read-more">ИЗУЧИТЬ ДОНЕСЕНИЕ →</a>
+                </div>
+            </article>
+
+            <!-- Статья 13 -->
+            <article class="article-card">
+                <h2><a href="/articles/13">Churchill: Британский пехотный танк</a></h2>
+                <p>Особенности конструкции и боевого применения. Сборка модели с детальной внутренней отделкой.</p>
+                <div class="article-meta">
+                    <span>📊 Сложность: Средняя</span>
+                    <a href="/articles/13" class="read-more">ИЗУЧИТЬ ДОНЕСЕНИЕ →</a>
+                </div>
+            </article>
+
+            <!-- Статья 14 -->
+            <article class="article-card">
+                <h2><a href="/articles/14">BT-7: Советский скоростной танк</a></h2>
+                <p>Анализ концепции колесно-гусеничного движителя. Создание предвоенного советского камуфляжа.</p>
+                <div class="article-meta">
+                    <span>📊 Сложность: Начальная</span>
+                    <a href="/articles/14" class="read-more">ИЗУЧИТЬ ДОНЕСЕНИЕ →</a>
+                </div>
+            </article>
+
+            <!-- Статья 15 -->
+            <article class="article-card">
+                <h2><a href="/articles/15">Sturmgeschütz III: Самоходка пехотной поддержки</a></h2>
+                <p>Самый массовый немецкий бронеобъект - технический анализ. Руководство по зимнему камуфляжу с
+                    использованием соли.</p>
+                <div class="article-meta">
+                    <span>📊 Сложность: Средняя</span>
+                    <a href="/articles/15" class="read-more">ИЗУЧИТЬ ДОНЕСЕНИЕ →</a>
+                </div>
+            </article>
+
+            <!-- Статья 16 -->
+            <article class="article-card">
+                <h2><a href="/articles/16">Т-80У: Советская газотурбинная легенда</a></h2>
+                <p>Сравнение с дизельными аналогами. Особенности создания современного российского камуфляжа.</p>
+                <div class="article-meta">
+                    <span>📊 Сложность: Высокая</span>
+                    <a href="/articles/16" class="read-more">ИЗУЧИТЬ ДОНЕСЕНИЕ →</a>
+                </div>
+            </article>
+
+            <!-- Статья 17 -->
+            <article class="article-card">
+                <h2><a href="/articles/17">Merkava: Израильская уникальность</a></h2>
+                <p>Анализ компоновки с передним расположением двигателя. Создание пустынного камуфляжа с эффектом
+                    выгорания.</p>
+                <div class="article-meta">
+                    <span>📊 Сложность: Профессиональная</span>
+                    <a href="/articles/17" class="read-more">ИЗУЧИТЬ ДОНЕСЕНИЕ →</a>
+                </div>
+            </article>
+
+            <!-- Статья 18 -->
+            <article class="article-card">
+                <h2><a href="/articles/18">Type 10: Японская технология</a></h2>
+                <p>Особенности конструкции для горной местности. Руководство по современному японскому камуфляжу.</p>
+                <div class="article-meta">
+                    <span>📊 Сложность: Высокая</span>
+                    <a href="/articles/18" class="read-more">ИЗУЧИТЬ ДОНЕСЕНИЕ →</a>
+                </div>
+            </article>
+
+            <!-- Статья 19 -->
+            <article class="article-card">
+                <h2><a href="/articles/19">AMX-56 Leclerc: Французская инженерия</a></h2>
+                <p>Анализ автоматизированной системы заряжания. Создание современного французского камуфляжа.</p>
+                <div class="article-meta">
+                    <span>📊 Сложность: Профессиональная</span>
+                    <a href="/articles/19" class="read-more">ИЗУЧИТЬ ДОНЕСЕНИЕ →</a>
+                </div>
+            </article>
+
+            <!-- Статья 20 -->
+            <article class="article-card">
+                <h2><a href="/articles/20">Challenger 2: Британская надежность</a></h2>
+                <p>Особенности конструкции и броневой защиты. Руководство по созданию британского пустынного камуфляжа.
+                </p>
+                <div class="article-meta">
+                    <span>📊 Сложность: Высокая</span>
+                    <a href="/articles/20" class="read-more">ИЗУЧИТЬ ДОНЕСЕНИЕ →</a>
+                </div>
+            </article>
+        </div>
+
+        <!-- SEO-контент -->
+        <section class="seo-content">
+            <h2>⚡ ШТАБНОЙ АРХИВ ТАНКОВОЙ ТЕХНИКИ</h2>
+
+            <div class="seo-section">
+                <h3>🎯 СТРАТЕГИЧЕСКИЕ МАТЕРИАЛЫ ПО БРОНЕТЕХНИКЕ</h3>
+                <p>Наш архив содержит эксклюзивные тактико-технические анализы бронемашин от Первой мировой до
+                    современных конфликтов. Каждое донесение проходит проверку на историческую достоверность и
+                    техническую точность. Мы сотрудничаем с музеями, ветеранами и действующими военными специалистами.
+                </p>
+
+                <div class="keyword-list">
+                    <span class="keyword-tag">модели танков купить</span>
+                    <span class="keyword-tag">сборные модели танков</span>
+                    <span class="keyword-tag">магазин моделей танков</span>
+                    <span class="keyword-tag">танки модели для сборки</span>
+                </div>
+            </div>
+
+            <div class="seo-section">
+                <h3>🔍 ЭКСПЕРТНЫЕ ОБЗОРЫ НОВИНОК 2024</h3>
+                <p>Ежеквартальные отчеты о новейших наборах от ведущих производителей: Takom, Meng, RFM. Детальный
+                    разбор качества литья, точности деталей и историчности. Рекомендации по дополнительным наборам
+                    фототравления и смоляных деталей.</p>
+
+                <div class="keyword-list">
+                    <span class="keyword-tag">новинки моделей танков 2024</span>
+                    <span class="keyword-tag">обзор моделей танков</span>
+                    <span class="keyword-tag">танки масштаб 1:35</span>
+                    <span class="keyword-tag">лучшие производители моделей танков</span>
+                </div>
+            </div>
+        </section>
+    </div>
+    <section id="contacts" class="footer">
+        <div class="wrap footer-grid">
+            <div>
+                <img src="hehe.png" alt="TankModel логотип">
+                <p>TankModel — интернет-магазин сборных моделей танков и аксессуаров. Масштабы 1:35 и 1:72, бренды
+                    Tamiya, Звезда, Revell. Мы предлагаем лучшие условия и консультации по выбору моделей и
+                    инструментов.</p>
+            </div>
+            <div>
+                <h4>Контакты</h4>
+                <p>г. Москва, ул. Моделистов, 7<br>Тел.: +7 (900) 123-45-67<br>E-mail: info@tankmodel.ru</p>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2025 TankModel. Все права защищены.</div>
+    </section>
+</body>
+
+</html>
